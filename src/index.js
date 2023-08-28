@@ -2,6 +2,7 @@
 
 import { inputCard } from "./components/inputCard";
 import { createTask } from "./modules/createTask";
+import { storeTask } from "./modules/storeTask";
 
 //DECLARATION SECTION
 
@@ -28,7 +29,12 @@ main.addEventListener('click', function(event){
         const taskDescriptionText = document.querySelector('#task-description').value;
         const taskDatePicked = document.querySelector('#datePicker').value;
         const taskPriorityPicked = document.querySelector('#priorityPicker').value;
+        const taskFormElement = document.querySelector('#add-task-form');
+
         taskSubmitBtn.addEventListener('click', createTask(taskNameText, taskDescriptionText, taskDatePicked, taskPriorityPicked, '', '', ''));
+
+        taskFormElement.reset();
+        inputCard.remove();
     }
 }, true);
 
