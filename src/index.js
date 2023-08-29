@@ -2,26 +2,37 @@
 
 import { inputCard } from "./components/inputCard";
 import { createTask } from "./modules/createTask";
-import { storeTask } from "./modules/storeTask";
+import { sidebar } from "./components/sidebar";
+import { taskList } from "./components/taskList";
+import { renderTask } from "./modules/renderTask";
+import "./style.css"
 
 //DECLARATION SECTION
 
 const main = document.querySelector('.main');
 
+const content = document.createElement('div');
+content.classList.add('content');
+
 const addTaskBtn = document.createElement('button');
-addTaskBtn.classList.add('add-task-btn');
-addTaskBtn.textContent = 'Add Task';
+addTaskBtn.classList.add('add-task-btn', 'btn', 'btn-primary');
+addTaskBtn.textContent = 'New task';
 
 // APPPEND SECTION
 
-main.appendChild(addTaskBtn);
+main.appendChild(sidebar);
+main.appendChild(content);
+content.appendChild(addTaskBtn);
+content.appendChild(taskList);
+
 
 // EVENT LISTENER SECTION
 
 main.addEventListener('click', function(event){
 
     let targetElement = event.target;
-    let submitBtnId = 'task-submit-btn';
+    const submitBtnId = 'task-submit-btn';
+    const backBtnId = 'task-back-btn';
 
     if (targetElement.id === submitBtnId) {
         const taskSubmitBtn = document.querySelector('#task-submit-btn');
@@ -32,12 +43,18 @@ main.addEventListener('click', function(event){
         const taskFormElement = document.querySelector('#add-task-form');
 
         taskSubmitBtn.addEventListener('click', createTask(taskNameText, taskDescriptionText, taskDatePicked, taskPriorityPicked, '', '', ''));
+        taskSubmitBtn.addEventListener('click', renderTask);
 
         taskFormElement.reset();
         inputCard.remove();
     }
+
+    if (targetElement.id === backBtnId) {
+        inputCard.remove();
+    }
+
 }, true);
 
 addTaskBtn.addEventListener('click', function() {
-    main.appendChild(inputCard);
+    content.appendChild(inputCard);
 });

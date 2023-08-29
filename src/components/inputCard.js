@@ -13,7 +13,7 @@ inputCard.innerHTML = `
   <input type="text" class="form-control" id="task-description">
 </div>
 <div class="mb-3">
-  <label for="datePicker">Select a due date</label>
+  <label for="datePicker">Enter a due date</label>
   <input id="datePicker" class="form-control" type="date" />
 </div>
 <div class="mb-3">
@@ -28,6 +28,7 @@ inputCard.innerHTML = `
   </select>
 </div>
 </form>
-<button class="btn btn-primary" id="task-submit-btn">Submit</button>`;
+<button class="btn btn-success" id="task-submit-btn">Add task</button>
+<button class="btn btn-secondary" id="task-back-btn">Back</button>`;
 
 export {inputCard};
