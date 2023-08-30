@@ -29,3 +29,50 @@ html, body {
     align-items: center;
     flex-direction: column;
 }
+
+.status-container {
+    display: flex;
+}
+
+.status-circle {
+    border: 1px solid black;
+    background-color: white;
+    height: 25px;
+    width: 25px;
+    border-radius: 100px;
+}
+
+/* FIX NAMING CONVENTION AND STUFF*/
+
+.table {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 50px;
+    width: 80vw;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    color: white;
+    background-color: rgb(33, 37, 41);
+}
+
+#library {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+}
+
+.task-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-collapse: collapse;
+    border-left: 2px solid rgba(33, 37, 41, 0.356);
+    border-right: 2px solid rgba(33, 37, 41, 0.356);
+    border-bottom: 2px solid rgba(33, 37, 41, 0.356);
+}

@@ -1,25 +1,15 @@
-const taskList = document.createElement('table');
+const taskList = document.createElement('div');
 
-taskList.classList.add('table', 'table-dark', 'table-striped', 'table-component');
+taskList.classList.add('table');
 
 taskList.innerHTML = `
-<thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Tags</th>
-        <th scope="col">Priority</th>
-        <th scope="col">Due date</th>
-        <th scope="col">status</th>
-    </tr>
-</thead>
-<tbody>
-    <tr class="table-item">
-        <td>test name</td>
-        <td>test tags</td>
-        <td>test priority</td>
-        <td>test date</td>
-        <td>test status</td>
-    </tr>
-</tbody>`
+<div class="header">
+    <p>Book Name</p>
+    <p>Book Author</p>
+    <p>Pages</p>
+    <p>Status</p>
+    <p>Delete</p>
+</div>
+<div id="tasks-container"></div>`;
 
 export {taskList};

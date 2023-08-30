@@ -1,4 +1,4 @@
-import {Task} from "../objects/task.js";
+import { Task } from "../objects/task.js";
 import { storeTask } from "./storeTask.js";
 
 function createTask(title, description, dueDate, priority, notes, tags, checklist, state) {
@@ -29,7 +29,7 @@ function createTask(title, description, dueDate, priority, notes, tags, checklis
     storeTask(task);
 }
 
-export {createTask};
+export { createTask };
 
 
 

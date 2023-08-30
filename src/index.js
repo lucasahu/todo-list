@@ -5,6 +5,7 @@ import { createTask } from "./modules/createTask";
 import { sidebar } from "./components/sidebar";
 import { taskList } from "./components/taskList";
 import { renderTask } from "./modules/renderTask";
+import { removeTask } from "./modules/removeTask";
 import "./style.css"
 
 //DECLARATION SECTION
@@ -17,6 +18,8 @@ content.classList.add('content');
 const addTaskBtn = document.createElement('button');
 addTaskBtn.classList.add('add-task-btn', 'btn', 'btn-primary');
 addTaskBtn.textContent = 'New task';
+
+window.removeTask = removeTask;
 
 // APPPEND SECTION
 

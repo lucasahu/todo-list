@@ -2,23 +2,23 @@ import { storage } from "../objects/storage";
 import { taskList } from "../components/taskList";
 
 function renderTask() {
-    if(storage.length !== 0) {
+    const taskContainerElement = document.querySelector('#tasks-container');
+    taskContainerElement.innerHTML = '';
+    for(let i = 0; i < storage.length; i++) {
+        const task = storage[i];
+        const tableItem = document.createElement('div');
 
-        const tableItem = document.createElement('tbody');
+        tableItem.classList = "task-row";
+        tableItem.innerHTML = `
+        <p>${task.title}</p>
+        <p>${task.tags}</p>
+        <p>${task.priority}</p>
+        <p>${task.dueDate}</p>
 
-        for(let i = 0; i < storage.length; i++) {
-
-            tableItem.innerHTML = `
-            <tr class="table-item">
-                <td>${storage[i].title}</td>
-                <td>${storage[i].tags}</td>
-                <td>${storage[i].priority}</td>
-                <td>${storage[i].dueDate}</td>
-                <td>${storage[i].state}</td>
-            </tr>`;
+        <button class="btn btn-outline-danger" id="task-remove-btn" onclick="removeTask(${i})">Remove</button>`;
             
-            taskList.appendChild(tableItem);
-        }
+        taskList.appendChild(tableItem);
+        taskContainerElement.appendChild(tableItem);
     }
 }
 
