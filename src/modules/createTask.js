@@ -1,7 +1,7 @@
 import { Task } from "../objects/task.js";
 import { storeTask } from "./storeTask.js";
 
-function createTask(title, description, dueDate, priority, notes, tags, checklist, state) {
+function createTask(title, description, dueDate, priority, notes, tags, checklist, state, operation, index) {
 
     if (dueDate == '') {
         dueDate = 'none';
@@ -26,7 +26,8 @@ function createTask(title, description, dueDate, priority, notes, tags, checklis
     state = false;
 
     let task = new Task(title, description, dueDate, priority, notes, tags, checklist, state);
-    storeTask(task);
+
+    storeTask(task, operation, index);
 }
 
 export { createTask };

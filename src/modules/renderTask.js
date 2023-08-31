@@ -14,9 +14,11 @@ function renderTask() {
         <p>${task.tags}</p>
         <p>${task.priority}</p>
         <p>${task.dueDate}</p>
-
-        <button class="btn btn-outline-danger" id="task-remove-btn" onclick="removeTask(${i})">Remove</button>`;
-            
+        <div class="task-btn-container">
+        <div class="status-circle"></div>
+        <button class="btn btn-secondary" id="task-edit-btn" onclick="editTask(${i})">Edit</button>
+        <button class="btn btn-danger" id="task-remove-btn" onclick="removeTask(${i})">Remove</button>
+        </div>`
         taskList.appendChild(tableItem);
         taskContainerElement.appendChild(tableItem);
     }

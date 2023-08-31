@@ -76,3 +76,8 @@ html, body {
     border-right: 2px solid rgba(33, 37, 41, 0.356);
     border-bottom: 2px solid rgba(33, 37, 41, 0.356);
 }
+
+.task-btn-container {
+    display: flex;
+    gap: 10px;
+}

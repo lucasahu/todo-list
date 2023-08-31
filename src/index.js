@@ -6,7 +6,9 @@ import { sidebar } from "./components/sidebar";
 import { taskList } from "./components/taskList";
 import { renderTask } from "./modules/renderTask";
 import { removeTask } from "./modules/removeTask";
+import { editTask } from "./modules/editTask";
 import "./style.css"
+import { editInputCard } from "./components/editInputCard";
 
 //DECLARATION SECTION
 
@@ -20,6 +22,7 @@ addTaskBtn.classList.add('add-task-btn', 'btn', 'btn-primary');
 addTaskBtn.textContent = 'New task';
 
 window.removeTask = removeTask;
+window.editTask = editTask;
 
 // APPPEND SECTION
 
@@ -34,10 +37,13 @@ content.appendChild(taskList);
 main.addEventListener('click', function(event){
 
     let targetElement = event.target;
-    const submitBtnId = 'task-submit-btn';
-    const backBtnId = 'task-back-btn';
+    const submitTaskBtnId = 'task-submit-btn';
+    const backTaskBtnId = 'task-back-btn';
+    const editTaskBtnId = 'task-edit-btn';
+    const submitTaskEditId = 'task-submit-edit-btn';
+    let currentIndex = '';
 
-    if (targetElement.id === submitBtnId) {
+    if (targetElement.id === submitTaskBtnId) {
         const taskSubmitBtn = document.querySelector('#task-submit-btn');
         const taskNameText = document.querySelector('#task-name').value;
         const taskDescriptionText = document.querySelector('#task-description').value;
@@ -52,8 +58,28 @@ main.addEventListener('click', function(event){
         inputCard.remove();
     }
 
-    if (targetElement.id === backBtnId) {
+    if (targetElement.id === backTaskBtnId) {
         inputCard.remove();
+    }
+
+    if (targetElement.id === editTaskBtnId) {
+        content.appendChild(editInputCard);
+        currentIndex = Number(targetElement.getAttribute('onclick').replace(/\D/g,''));
+    }
+
+    if (targetElement.id === submitTaskEditId) {
+        const taskSubmitEditBtn = document.querySelector('#task-submit-edit-btn');
+        const taskNameEditText = document.querySelector('#task-name').value;
+        const taskDescriptionEditText = document.querySelector('#task-description').value;
+        const taskDateEditPicked = document.querySelector('#datePicker').value;
+        const taskPriorityEditPicked = document.querySelector('#priorityPicker').value;
+        const taskFormEditElement = document.querySelector('#add-task-form');
+
+        taskSubmitEditBtn.addEventListener('click', editTask(taskNameEditText, taskDescriptionEditText, taskDateEditPicked, taskPriorityEditPicked, '', '', '', currentIndex));
+        taskSubmitEditBtn.addEventListener('click', renderTask);
+
+        taskFormEditElement.reset();
+        editInputCard.remove();
     }
 
 }, true);
